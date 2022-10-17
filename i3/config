@@ -1,0 +1,145 @@
+# Set the mod to the win key
+set $mod Mod4
+
+
+#
+# Colors
+#
+
+# Palette
+set $darkbluetrans	#08052be6
+set $darkblue		#08052b
+set $lightblue		#5294e2
+set $urgentred		#e53935
+set $white		#ffffff
+set $black		#000000
+set $purple		#e345ff
+set $darkgrey		#383c4a
+set $grey		#b0b5bd
+set $mediumgrey		#8b8b8b
+set $yellowbrown	#e1b700
+
+# Define window colors
+# class			border		bg		text	indicator	child_border
+client.focused		$lightblue	$darkblue	$white	$purple		$mediumgrey
+client.unfocused	$darkblue	$darkblue	$grey	$purple		$darkgrey
+client.focused_inactive	$darkblue	$darkblue	$grey	$purple		$black
+client.urgent		$urgentred	$urgentred	$white	$purple		$yellowbrown
+
+#
+# i3 Window
+#
+
+# default i3 tilling mode
+workspace_layout default
+
+# border indicator
+new_window pixel 1
+
+# Inner/Outer gaps
+# gaps inner 6
+# gaps outer 3
+
+# Use <Mouse-mod> to drag window
+floating_modifier $mod
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# Move container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Change container focus
+bindsym $mod+h focus left
+bindsym $mod+j focus up 
+bindsym $mod+k focus down
+bindsym $mod+l focus right
+
+# Move focused container
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move up
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move right
+
+# Split
+bindsym $mod+w+h split h # Horizontal
+bindsym $mod+w+v split v # Vertical
+
+# Enter fullscreen on focused container
+bindsym $mod+f fullscreen toggle
+
+# Change container Layout (Stacked, Tabbed, Toggle split)
+#bindsym $mod+l+s layout stacking
+#bindsym $mod+l+g layout tabbed
+#bindsym $mod+l+e layout toggle split
+
+# Workspace names
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+
+#
+# Utils
+#
+
+# Open alacritty
+# bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
+
+# Restart i3
+bindsym $mod+Shift+r restart
+
+# Kill i3
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# Open rofi
+bindsym $mod+d exec "rofi -show {run,drun,window} -theme $HOME/.local/share/rofi/themes/squared-everforest.rasi"
+
+# Capture portion of screen
+bindsym --release $mod+z exec scrot -s
+
+# Capture all screen
+bindsym $mod+x exec scrot
+
+#
+# Startup applications
+#
+
+# Picom (compositor)
+exec_always --no-startup-id  picom
+
+# Polybar
+# exec_always --no-startup-id "polybar -c $HOME/.config/polybar/config.ini"
+exec_always --no-startup-id $HOME/.config/polybar/start.sh
+
+# Wallpaper
+exec_always --no-startup-id "feh --bg-fil $HOME/.config/wallpapers/anime-girl-rain-umbrella.jpg"
