@@ -15,5 +15,9 @@ function fish_prompt -d "Write out the prompt"
     # This shows up as USER@HOST /home/user/ >, with the directory colored
     # $USER and $hostname are set by fish, so you can just use them
     # instead of using `whoami` and `hostname`
+    if [ $NIX_SHELL ]
+        printf '%s[shell#%s] ' (set_color brblack) $NIX_SHELL
+    end
+
     printf '%s[%s] %s%s%s%s%s %s|%s ' (set_color brblack) (date +%H:%M) (set_color brwhite) $hostname (get_prompt_cwd) (set_color normal) (fish_git_prompt) (set_color red) (set_color normal)
 end

@@ -119,16 +119,15 @@ font:
     # The `style` can be specified to pick a specific face.
     #style: Regular
 
-  # Bold font face
-  #bold:
+  bold:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    #family: monospace
+    family: JetBrains Mono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold
+    style: Bold
 
   # Italic font face
   #italic:
@@ -181,7 +180,32 @@ font:
 
 color_schemes:
 
+  monokai: &monokai
+    primary:
+      background: '0x2c2525'
+      foreground: '0xfff1f3'
 
+    # Normal colors
+    normal:
+      black:   '0x2c2525'
+      red:     '0xfd6883'
+      green:   '0xadda78'
+      yellow:  '0xf9cc6c'
+      blue:    '0xf38d70'
+      magenta: '0xa8a9eb'
+      cyan:    '0x85dacc'
+      white:   '0xfff1f3'
+
+    # Bright colors
+    bright:
+      black:   '0x72696a'
+      red:     '0xfd6883'
+      green:   '0xadda78'
+      yellow:  '0xf9cc6c'
+      blue:    '0xf38d70'
+      magenta: '0xa8a9eb'
+      cyan:    '0x85dacc'
+      white:   '0xfff1f3'
 
   latte: &latte
 
@@ -515,8 +539,8 @@ color_schemes:
 
 
 
-# Options - latte, frappe, macchiato, mocha
-colors: *mocha
+# Options - latte, frappe, macchiato, mocha, monokai
+colors: *monokai
 
   # Line indicator
   #
@@ -579,7 +603,7 @@ colors: *mocha
   # The indexed colors include all colors from 16 to 256.
   # When these are not set, they're filled with sensible defaults.
   #
-  # Example:
+  # Example:a
   #   `- { index: 16, color: '#ff00ff' }`
   #
   #indexed_colors: []
@@ -681,7 +705,7 @@ cursor:
 #live_config_reload: true
 
 # Shell
-#
+#a
 # You can set `shell.program` to the path of your favorite shell, e.g.
 # `/bin/fish`. Entries in `shell.args` are passed unmodified as arguments to the
 # shell.
@@ -691,9 +715,11 @@ cursor:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /usr/bin/fish
-#  args:
-#    - --login
+  program: fish
+  args:
+    - -l
+    - -c
+    - "tmux attach || tmux"
 
 # Startup directory
 #
@@ -1122,4 +1148,4 @@ shell:
   # Print all received window events.
   #print_events: false
 window:
-  opacity: 0.8
+  opacity: 1 # 0.9

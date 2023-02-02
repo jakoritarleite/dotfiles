@@ -14,4 +14,8 @@ set -gx PNPM_HOME "/home/koritar/.local/share/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH
 # pnpm end
 
+# tmux
+set -gx PATH "~/.local/bin" $PATH
 
+# Alias for nix
+alias nix-shell "nix-shell --run fish"
