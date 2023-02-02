@@ -1,9 +1,10 @@
 [user]
-	email = jakoritarleite@gmail.com
-	name = Joao Koritar
+    name = "João Koritar"
+    email = "jakoritarleite@gmail.com"
 
 [core]
     editor = nvim
+    pager = delta
 
 [alias]
     s = !git status --short
@@ -13,3 +14,26 @@
     ac = !git add . && git commit -m
     ca = !git commit --amend
 
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
+# Alternate between work and personal
+[includeIf "gitdir:~/projects/"]
+    path = ~/projects/.gitconfig-arqgen
+
+[credential "https://github.com"]
+	helper = 
+	helper = !/home/koritar/.nix-profile/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+    helper = !/home/koritar/.nix-profile/bin/gh auth git-credential
