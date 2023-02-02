@@ -70,6 +70,9 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+# Move workspace to monitor
+bindsym $mod+p move workspace to output bottom
+
 # Change container focus
 bindsym $mod+h focus left
 bindsym $mod+j focus up 
@@ -113,7 +116,7 @@ set $ws10 "10"
 
 # Open alacritty
 # bindsym $mod+Return exec alacritty
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 
 # Restart i3
 bindsym $mod+Shift+r restart
@@ -125,10 +128,21 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+d exec "rofi -show {run,drun,window} -theme $HOME/.local/share/rofi/themes/squared-everforest.rasi"
 
 # Capture portion of screen
-bindsym --release $mod+z exec scrot -s
+# bindsym --release $mod+z exec scrot -s
 
 # Capture all screen
-bindsym $mod+x exec scrot
+# bindsym $mod+x exec scrot
+
+# Capture with flameshot
+bindsym $mod+x exec flameshot gui
+
+#
+# Spotify
+#
+bindsym $mod+Shift+p exec gospt play
+bindsym $mod+Shift+s exec gospt pause
+bindsym $mod+Shift+n exec gospt next
+bindsym $mod+Shift+v exec gospt prev
 
 #
 # Startup applications
@@ -142,4 +156,4 @@ exec_always --no-startup-id  picom
 exec_always --no-startup-id $HOME/.config/polybar/start.sh
 
 # Wallpaper
-exec_always --no-startup-id "feh --bg-fil $HOME/.config/wallpapers/anime-girl-rain-umbrella.jpg"
+exec_always --no-startup-id "feh --bg-fil $HOME/.dotfiles/wallpapers/anime-girl-rain-umbrella.jpg"
