@@ -5,6 +5,8 @@ end
 # Some nice alias
 alias vim nvim
 alias cat bat
+alias top bpytop
+alias htop bpytop
 
 # Bat configuration
 set -gx BAT_THEME catppuccin-mocha 

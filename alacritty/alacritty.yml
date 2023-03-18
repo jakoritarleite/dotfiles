@@ -107,24 +107,19 @@ font:
 
   # Normal (roman) font face
   normal:
-    # Font family
-    #
-    # Default:
-    #   - (macOS) Menlo
-    #   - (Linux/BSD) monospace
-    #   - (Windows) Consolas
     family: JetBrains Mono Nerd Font
-    size: 14.0
+    # family: Monocraft Nerd Font
+    # family: scientifica
 
     # The `style` can be specified to pick a specific face.
-    #style: Regular
+    style: Regular
 
   bold:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrains Mono Nerd Font
+    # family: JetBrains Mono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -152,6 +147,8 @@ font:
     #style: Bold Italic
 
   # Point size
+  # size: 12.0
+  # size: 10
   size: 9.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
