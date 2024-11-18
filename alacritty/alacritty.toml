@@ -1,0 +1,34 @@
+import = [
+    # "/home/koritar/.config/alacritty/tempus-themes/tempus_classic.toml",
+    # "/home/koritar/.config/alacritty/themes/base16-grayscale-dark.toml", 
+    "/home/koritar/.config/alacritty/themes/base16-grayscale-dark-256.toml"
+]
+
+[cursor.style]
+shape = "Block"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 11.0
+
+[font.normal]
+#family = "SF Mono"
+family = "ZedMono Nerd Font"
+style = "Medium"
+
+[scrolling]
+history = 100000
+
+[shell]
+args = ["-l", "-c", "tmux attach || tmux"]
+program = "fish"
+
+[window]
+decorations = "full"
+opacity = 1
+
+[window.padding]
+x = 5
+y = 5

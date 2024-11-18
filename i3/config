@@ -115,8 +115,10 @@ set $ws10 "10"
 #
 
 # Open alacritty
-# bindsym $mod+Return exec alacritty
 bindsym $mod+Return exec alacritty
+
+# Open neovide
+bindsym $mod+Shift+Return exec neovide
 
 # Restart i3
 bindsym $mod+Shift+r restart
