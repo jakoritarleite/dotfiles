@@ -1,12 +1,14 @@
 # Set the mod to the win key
 set $mod Mod4
 
+#
+# Fonts
+#
+# font pango: SFMono Nerd Font Mono, DejaVu Sans 10
 
 #
 # Colors
 #
-
-# Palette
 set $darkbluetrans	#08052be6
 set $darkblue		#08052b
 set $lightblue		#5294e2
@@ -34,11 +36,11 @@ client.urgent		$urgentred	$urgentred	$white	$purple		$yellowbrown
 workspace_layout default
 
 # border indicator
-new_window pixel 1
+new_window pixel 0
 
 # Inner/Outer gaps
-# gaps inner 6
-# gaps outer 3
+gaps inner 0
+gaps outer 0
 
 # Use <Mouse-mod> to drag window
 floating_modifier $mod
@@ -57,6 +59,12 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
+
+# Move focused workspace to output
+bindsym $mod+Control+h move workspace to output left
+bindsym $mod+Control+j move workspace to output up
+bindsym $mod+Control+l move workspace to output right
+bindsym $mod+Control+k move workspace to output down
 
 # Move container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -84,6 +92,12 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move up
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move right
+
+# Resizing windows by 10 units
+bindsym $mod+Shift+Right resize grow width 10 px or 10 ppt
+bindsym $mod+Shift+Up resize grow height 10 px or 10 ppt
+bindsym $mod+Shift+Down resize shrink height 10 px or 10 ppt
+bindsym $mod+Shift+Left resize shrink width 10 px or 10 ppt
 
 # Split
 bindsym $mod+w+h split h # Horizontal
@@ -114,10 +128,18 @@ set $ws10 "10"
 # Utils
 #
 
+# Volume control
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Set screen saver
+bindsym $mod+Control+s exec russ
+
 # Open alacritty
+# bindsym $mod+Return exec alacritty
 bindsym $mod+Return exec alacritty
 
-# Open neovide
 bindsym $mod+Shift+Return exec neovide
 
 # Restart i3
@@ -127,7 +149,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Open rofi
-bindsym $mod+d exec "rofi -show {run,drun,window} -theme $HOME/.local/share/rofi/themes/squared-everforest.rasi"
+bindsym $mod+d exec "dmenu_run -fn cozette"
 
 # Capture portion of screen
 # bindsym --release $mod+z exec scrot -s
@@ -150,12 +172,27 @@ bindsym $mod+Shift+v exec gospt prev
 # Startup applications
 #
 
+# exec_always --no-startup-id "xcompmgr -c"
+
+# Monitors layout
+#exec_always --no-startup-id /home/koritar/.config/.local/scripts/randr
+exec_always --no-startup-id autorandr --change
+
 # Picom (compositor)
-exec_always --no-startup-id  picom
+# exec_always --no-startup-id picom -b
 
 # Polybar
 # exec_always --no-startup-id "polybar -c $HOME/.config/polybar/config.ini"
-exec_always --no-startup-id $HOME/.config/polybar/start.sh
+exec_always --no-startup-id /home/$USER/.config/polybar/start.sh
 
 # Wallpaper
-exec_always --no-startup-id "feh --bg-fil $HOME/.dotfiles/wallpapers/anime-girl-rain-umbrella.jpg"
+# exec_always --no-startup-id "feh --bg-fill $HOME/.config/wallpapers/fragment-pacman.png"
+# exec_always --no-startup-id "feh --bg-max $HOME/.config/wallpapers/doom-logo-classic.jpg"
+# exec_always --no-startup-id "feh --bg-fill $HOME/.config/wallpapers/blasphemous-1.webp"
+# exec_always --no-startup-id "feh --bg-fill $HOME/.config/wallpapers/dark-souls-remastered-knight-bonfire.jpg"
+# exec_always --no-startup-id "feh --bg-fill $HOME/.config/wallpapers/bonfire.gif"
+exec_always --no-startup-id "feh --bg-fill $HOME/.dotfiles/wallpapers/yosemite-valley.jpg"
+
+# Disable monitor sleep
+exec_always --no-startup-id "xset -dpms"
+exec_always --no-startup-id "xset s off"
