@@ -1,0 +1,16 @@
+font-family = "ZedMono Nerd Font"
+font-style = medium
+font-size = 12
+
+gtk-titlebar = false
+adw-toolbar-style = flat
+gtk-wide-tabs = false
+gtk-adwaita = false
+
+command = fish -l -c "tmux attach || tmux"
+
+theme = base16-grayscale-dark-256
+
+confirm-close-surface = false
+
+shell-integration = fish
